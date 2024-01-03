@@ -1,0 +1,33 @@
+.videos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+iframe{
+    padding: 10px;
+}
+
+.titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div-principal{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around
+}
+
+.subdiv1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subdiv2{
+    display: flex;
+    flex-direction: column;
+}
