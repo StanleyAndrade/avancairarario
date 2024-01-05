@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Start from './assets/js/start';
 import Home from './assets/js/home'
 import Reset from './assets/js/reset';
+import CDV from './assets/js/cdv'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "reset",
     element: <Reset/>
+  },
+  {
+    path: "cdv",
+    element: <CDV/>
   }
 ])
 

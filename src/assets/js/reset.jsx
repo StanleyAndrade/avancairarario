@@ -1,57 +1,72 @@
-import { Link } from 'react-router-dom'
+//Importing CSS
 import '../css/cursos.css'
+import '../css/responsive.css'
+
+//Importin React and React Router Dom
 import React from 'react'
+import { Link } from 'react-router-dom'
+import ResetPDF from '../pdf/Reset.pdf'
 
 const Reset = () => {
-    //Código para corrigir os bugs do React no carregamento dos vídeos
-    // React.useEffect(() => {
-    //     const handleScrool = () => {
-    //         // Lógica a ser executada quando houver rolagem
-    //         console.log('Página rolada')
-    //     }
-        
-    //     // Adiciona o event listener de rolagem marcando como 'passive'
-    //     window.addEventListener('scroll', handleScrool, {passive: true})
-
-    //     // Remove o event listener ao desmontar o componente
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScrool)
-    //     }
-    // }, [])
 
     //Aulas
     function aula1 () {
+        var nomeAula1 = `Lição 1 <br/> Reconhecendo a Cristo como Senhor`
         var varAula1 = `<iframe width="560" height="315" src="https://www.youtube.com/embed/fuh3jtveqD4?si=1oVPbPYH3tYsPuPZ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>`
-        var nomeAula1 = "Reconhecendo a Cristo como Senhor"
-        document.getElementById("mostrarVideo").innerHTML = varAula1
+        var btnLer = `<button id='btn-inside' onClick={aula1}>Ler Online</button>`
+        var btnQuestionario = `<button id='btn-inside' onClick={aula1}>Fazer Questionário</button><br/>`
+
         document.getElementById('mostrarNome').innerHTML = nomeAula1
+        document.getElementById("mostrarVideo").innerHTML = varAula1
+        document.getElementById('mostrarBtnLer').innerHTML = btnLer
+        document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
     }
 
-    function aula2 () {
-        var varAula2 = `<iframe width="560" height="315" src="https://www.youtube.com/embed/_xtmwkQtx6w?si=wob4bSq7fvzHLO0S" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>`
-        var nomeAula2 = "Conhecendo Jesus Cristo"
-        document.getElementById("mostrarVideo").innerHTML = varAula2
-        document.getElementById('mostrarNome').innerHTML = nomeAula2
-    }
+    // function aula2 () {
+    //     var varAula2 = `<iframe width="560" height="315" src="https://www.youtube.com/embed/_xtmwkQtx6w?si=wob4bSq7fvzHLO0S" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>`
+    //     var nomeAula2 = `Lição 2 <br/> Conhecendo Jesus Cristo`
+    //     document.getElementById("mostrarVideo").innerHTML = varAula2
+    //     document.getElementById('mostrarNome').innerHTML = nomeAula2
+    // }
 
 
     return(
-        <div>
+        <div className='father'>
             <div className='titulo'>
-                <h1>RESET</h1>
+                <h3 className='projeto'>PROJETO</h3>
+                <h1 className='avancai'>AVANÇAI</h1>
+                <h2 className='modulo'>RESET</h2><br/>
+                <a href={ResetPDF} download="Reset.pdf"><button id='btn-inside'>Baixar Apostila</button></a>
+                <a href=''><button id='btn-inside'>Fazer Questionário</button><br/></a>
             </div>
 
             <div className='div-principal'>
                 <div className='subdiv1'>
                     <h3 id='mostrarNome'></h3>
                     <span id='mostrarVideo'></span>
+                    <div id='botoes-video'>
+                        <span id='mostrarBtnApostila'></span>
+                        <span id='mostrarBtnLer'></span>
+                        <span id='mostrarBtnQuestionario'></span>
+                    </div>
+
                     
 
                 </div>
 
                 <div className='subdiv2'>
-                    <button onClick={aula1}>Aula 1</button><br/>
-                    <button onClick={aula2}>Aula 2</button>
+                    <button className='btn-aula' onClick={aula1}>Aula 1</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 2</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 3</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 4</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 5</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 6</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 7</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 8</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 9</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 10</button><br/>
+                    <button className='btn-aula' onClick={null}>Aula 11</button><br/>
+
                 </div>
             </div>
             
