@@ -1,6 +1,7 @@
 .logo{
     padding-top: 10px;
     padding-bottom: 30px;
+    width: 300px;
 }
 
 .children{
@@ -24,5 +25,5 @@
     border: none;
     height: 35px;
     width: 100%;
-    
+    cursor: pointer;
 }

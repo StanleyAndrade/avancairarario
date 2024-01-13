@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDV</title>
+    <!--Importando CSS Index-->
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css//modulos.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/nav-menu-top.css">
+
+    <!--Importando JS-->
+    <script src="/js/cdv.js"></script>
+</head>
+<body>
+    <!-- menu -->
+    <input
+    id="close-menu"
+    class="close-menu"
+    type="checkbox"
+    aria-label="close-menu"
+    role="button"
+    />
+    <label
+        class="close-menu-label"
+        for="close-menu"
+        title="close menu"
+    ></label>
+    <div class="barra">
+        <div class="menu-centro">
+            <div class="barra-conteiner centralizador">
+                <div class="logo esquerda">
+                    <!--<a href="index.html"
+                        ><img src="./assets/img/logotechsos.png" alt="logo" class="logotechsos"/>
+                    </a>-->
+                </div>
+                <nav class="direita">
+                    <ul
+                        onclick="getElementById('close-menu').checked=false;"
+                    >
+                        <li><a href="/index.html">INÍCIO</a></li>
+                        <li><a href="/views/reset.html">RESET</a></li>
+                        <li><a href="/views/start.html">START</a></li>
+                        <li><a href="/views/cdv.html">CDV</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- menu -->
+
+    <div class="father">
+        <div class="div-titulo">
+            <h3 class='projeto'>PROJETO</h3>
+            <h1 class='avancai'>AVANÇAI</h1>
+            <h2 class='modulo'>CDV</h2><br/>
+            <p class="descricao-cdv"><i>Centro de Despertamento Vocacional</i></p><br/>
+            <a href="/apostilas/CDV.pdf" ><button id="btn-baixarApostila">Baixar Apostila</button></a>
+        </div>
+
+        <div class="div-principal">
+            <div class="subdiv1">
+
+                <h3 id="mostrarNome"></h3>
+                <span id="mostrarVideo"></span>
+
+                <div id="botoes-abaixo-video">
+                    <span id="mostrarBtnQuestionario"></span>
+                </div>
+
+            </div>
+
+            <div class='subdiv2'>
+                <button class='btn-aula' onclick="aula1()" >Aula 1</button><br/>
+                <button class='btn-aula' onclick="aula2()">Aula 2</button><br/>
+                <button class='btn-aula' onclick="aula3()">Aula 3</button><br/>
+                <button class='btn-aula' onclick="aula4()">Aula 4</button><br/>
+                <button class='btn-aula' onclick="aula5()">Aula 5</button><br/>
+                <button class='btn-aula' onclick="aula6()">Aula 6</button><br/>
+                <button class='btn-aula' onclick="aula7()">Aula 7</button><br/>
+                <button class='btn-aula' onclick="aula8()">Aula 8</button><br/>
+                <button class='btn-aula' onclick="aula9()">Aula 9</button><br/>
+                <button class='btn-aula' onclick="aula10()">Aula 10</button><br/>
+                <button class='btn-aula' onclick="aula11()">Aula 11</button><br/>
+                <button class='btn-aula' onclick="aula12()">Aula 12</button><br/>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

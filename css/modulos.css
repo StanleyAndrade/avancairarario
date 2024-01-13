@@ -1,0 +1,95 @@
+.div-titulo{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.projeto{
+    margin: 0%;
+    margin-top: 5%;
+}
+
+.avancai{
+    color: #B0E325;
+    margin: 0%;
+}
+
+.modulo{
+    margin: 0%;
+}
+
+.descricao-cdv{
+    margin: 0%;
+    margin-top: -1%;
+}
+
+#btn-baixarApostila{
+    border-radius: 10px;
+    background-color: #415704;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    border-color: #B0E325;
+    height: 40px;
+}
+
+#btn-inside{
+    border-radius: 10px;
+    background-color: #415704;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    border-color: #B0E325;
+    height: 40px;
+}
+
+.div-principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around
+}
+
+.subdiv1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.subdiv2{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.btn-aula{
+    border-radius: 20px;
+    border: none;
+    background-color: #B0E325;
+    color:black;
+    width: 80px;
+    height: 40px;
+    font-weight: bold;
+    font-size:large;
+}
+
+#botoes-abaixo-video{
+    display: flex;
+    flex-direction: row;
+}
+
+.videos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+iframe{
+    padding: 10px;
+    border-radius: 20px;
+}
+
