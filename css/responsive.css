@@ -1,3 +1,9 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+
 
 @media screen and (max-width: 700px) {
 
@@ -74,12 +80,20 @@
         border-radius: 10px;
         margin: none;
     }
+
+    .div-titulo{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        margin-top: 1px;
+    }
     /* Página RESET*/
 
     
     /* Página HOME*/
     .logo{
-        width: 300px;
+        width: 200px;
         padding-bottom: 40px;
     }
     /* Página HOME*/
@@ -90,6 +104,24 @@
     }
 
     /* Prova*/
+    .btn-prova{
+        background-color: #B0E325;
+        margin-bottom: 30px;
+        border-radius: 15px;
+        font-size: large;
+        font-weight: bold;
+        border: none;
+        height: 350px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    #input-questionario{
+        padding-bottom: 10px;
+        width: 95%;
+        font-size: medium;
+        border: none;
+    }
     
     
 }

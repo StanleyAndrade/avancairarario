@@ -12,7 +12,7 @@ ul {
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
-    
+    display: flex;    
 }
 
 nav {

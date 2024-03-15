@@ -1,8 +1,15 @@
+.logo{
+    padding-top: 10px;
+    padding-bottom: 30px;
+    width: 300px;
+}
+
 .div-titulo{
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
+    margin-top: 70px;
 }
 
 .projeto{
@@ -92,4 +99,3 @@ iframe{
     padding: 10px;
     border-radius: 20px;
 }
-

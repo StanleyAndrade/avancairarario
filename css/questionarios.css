@@ -1,0 +1,21 @@
+.logo-e-titulo{
+    text-align: center;
+}
+
+.btn-prova{
+    background-color: #B0E325;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    height: 35px;
+    cursor: pointer;
+}
+
+#input-questionario{
+    padding-bottom: 10px;
+    font-size: medium;
+    border: none;
+    width: 95%;
+}

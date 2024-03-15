@@ -5,7 +5,7 @@ function aula1() {
 
     document.getElementById('mostrarNome').innerHTML = nomeAula1
     document.getElementById("mostrarVideo").innerHTML = varAula1
-    document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
+    document.getElementById('mostrarBtnQuestionario').innerHTML = 'Responda o questionário que está na apostila em uma folha de caderno, <br> ou digite no whatsapp e envie para o professor'
     
     window.scroll({top: 0, behavior: 'smooth'})
 }
@@ -17,7 +17,7 @@ function aula2() {
 
     document.getElementById('mostrarNome').innerHTML = nomeAula1
     document.getElementById("mostrarVideo").innerHTML = varAula1
-    document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
+    document.getElementById('mostrarBtnQuestionario').innerHTML = 'Responda o questionário que está na apostila em uma folha de caderno, <br> ou digite no whatsapp e envie para o professor'
     
     window.scroll({top: 0, behavior: 'smooth'})
 }
@@ -29,7 +29,7 @@ function aula3() {
 
     document.getElementById('mostrarNome').innerHTML = nomeAula1
     document.getElementById("mostrarVideo").innerHTML = varAula1
-    document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
+    document.getElementById('mostrarBtnQuestionario').innerHTML = 'Responda o questionário que está na apostila em uma folha de caderno, <br> ou digite no whatsapp e envie para o professor'
     
     window.scroll({top: 0, behavior: 'smooth'})
 }
@@ -41,7 +41,7 @@ function aula4() {
 
     document.getElementById('mostrarNome').innerHTML = nomeAula1
     document.getElementById("mostrarVideo").innerHTML = varAula1
-    document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
+    document.getElementById('mostrarBtnQuestionario').innerHTML = 'Responda o questionário que está na apostila em uma folha de caderno, <br> ou digite no whatsapp e envie para o professor'
     
     window.scroll({top: 0, behavior: 'smooth'})
 }
@@ -77,7 +77,7 @@ function aula7() {
 
     document.getElementById('mostrarNome').innerHTML = nomeAula1
     document.getElementById("mostrarVideo").innerHTML = varAula1
-    document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
+    document.getElementById('mostrarBtnQuestionario').innerHTML = 'Responda o questionário que está na apostila em uma folha de caderno, <br> ou digite no whatsapp e envie para o professor'
     
     window.scroll({top: 0, behavior: 'smooth'})
 }
@@ -89,7 +89,7 @@ function aula8() {
 
     document.getElementById('mostrarNome').innerHTML = nomeAula1
     document.getElementById("mostrarVideo").innerHTML = varAula1
-    document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
+    document.getElementById('mostrarBtnQuestionario').innerHTML = 'Responda o questionário que está na apostila em uma folha de caderno, <br> ou digite no whatsapp e envie para o professor'
     
     window.scroll({top: 0, behavior: 'smooth'})
 }
@@ -101,7 +101,7 @@ function aula9() {
 
     document.getElementById('mostrarNome').innerHTML = nomeAula1
     document.getElementById("mostrarVideo").innerHTML = varAula1
-    document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
+    document.getElementById('mostrarBtnQuestionario').innerHTML = 'Responda o questionário que está na apostila em uma folha de caderno, <br> ou digite no whatsapp e envie para o professor'
     
     window.scroll({top: 0, behavior: 'smooth'})
 }
@@ -113,7 +113,7 @@ function aula10() {
 
     document.getElementById('mostrarNome').innerHTML = nomeAula1
     document.getElementById("mostrarVideo").innerHTML = varAula1
-    document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
+    document.getElementById('mostrarBtnQuestionario').innerHTML = 'Responda o questionário que está na apostila em uma folha de caderno, <br> ou digite no whatsapp e envie para o professor'
 
     window.scroll({top: 0, behavior: 'smooth'})
 }
@@ -125,7 +125,7 @@ function aula11() {
 
     document.getElementById('mostrarNome').innerHTML = nomeAula1
     document.getElementById("mostrarVideo").innerHTML = varAula1
-    document.getElementById('mostrarBtnQuestionario').innerHTML = btnQuestionario
+    document.getElementById('mostrarBtnQuestionario').innerHTML = 'Responda o questionário que está na apostila em uma folha de caderno, <br> ou digite no whatsapp e envie para o professor'
 
     window.scroll({top: 0, behavior: 'smooth'})
 }
