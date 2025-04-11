@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escala de Culto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    textarea, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .escala {
+      margin-top: 20px;
+    }
+
+    .culto {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .culto h3 {
+      margin: 0 0 10px;
+    }
+
+    .compartilhar {
+      margin-top: 20px;
+      background-color: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gerador de Escala - Igreja</h1>
+  <label>Insira os nomes (separados por vírgula):</label>
+  <textarea id="nomes" rows="6" placeholder="Ex: João, Maria, Pedro, Ana, ..."></textarea>
+  <button onclick="gerarEscala()">Gerar Escala</button>
+
+  <div class="escala" id="resultado"></div>
+
+  <button class="compartilhar" onclick="compartilhar()">Compartilhar via WhatsApp</button>
+
+  <script>
+    function embaralhar(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function gerarEscala() {
+      const nomesInput = document.getElementById("nomes").value;
+      const nomes = nomesInput.split(",").map(n => n.trim()).filter(n => n);
+
+      if (nomes.length < 40) {
+        alert("Você precisa inserir pelo menos 40 nomes.");
+        return;
+      }
+
+      const totalCultos = 8;
+      const pessoasPorCulto = 5;
+      const totalNecessario = totalCultos * pessoasPorCulto;
+
+      const nomesUsados = embaralhar([...nomes]).slice(0, totalNecessario);
+
+      let resultado = "";
+      for (let i = 0; i < totalCultos; i++) {
+        const inicio = i * pessoasPorCulto;
+        const grupo = nomesUsados.slice(inicio, inicio + pessoasPorCulto);
+
+        resultado += `
+          <div class="culto">
+            <h3> *Culto* ${i + 1}</h3>
+            <p><strong> *Portaria:* </strong> ${grupo[0]}, ${grupo[1]}</p>
+            <p><strong> *Recepção:* </strong> ${grupo[2]}, ${grupo[3]}</p>
+            <p><strong> *Bebedouro:* </strong> ${grupo[4]}</p>
+          </div>
+        `;
+      }
+
+      document.getElementById("resultado").innerHTML = resultado;
+    }
+
+    function compartilhar() {
+      const texto = document.getElementById("resultado").innerText;
+      const link = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+      window.open(link, "_blank");
+    }
+  </script>
+</body>
+</html>
