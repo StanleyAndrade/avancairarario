@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2º TESTE DOS DONS ESPIRITUAIS</title>
+  <link rel="stylesheet" href="/css/testes.css" />
+  <meta property="og:image" content="https://avancairarario.vercel.app/img/2.png" />
+</head>
+<body>
+  <div class="quiz-container">
+    <!-- Tela de boas-vindas -->
+    <div id="start-screen">
+      <img class="logo" src="/img/logo.jpg" alt="">
+      <h2>Bem-vindo ao 2º TESTE DOS DONS ESPIRITUAIS</h2>
+      <button id="start-btn">Vamos começar</button>
+    </div>
+
+    <!-- Tela para inserir nome -->
+    <div id="name-screen" style="display: none;">
+      <h2>Informe seu nome completo:</h2>
+      <input type="text" id="nomeCompleto" placeholder="Nome completo" />
+      <button id="iniciar-quiz-btn">Iniciar Quiz</button>
+    </div>
+
+    <!-- Quiz -->
+    <div id="quiz" style="display: none;">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="progress-info" id="progress-info">0% — Pergunta 1 de 25</div><br><br>
+      <h2 id="question"></h2>
+      <div class="answers">
+        <div class="answer" data-value="0">😞 Nunca</div>
+        <div class="answer" data-value="1">😐 Raramente</div>
+        <div class="answer" data-value="2">😊 Às vezes</div>
+        <div class="answer" data-value="3">😄 Frequentemente</div>
+        <div class="answer" data-value="4">😜 Muito</div>
+        <div class="answer" data-value="5">😎 Eu brilho nisso</div>
+      </div>
+    </div>
+
+    <!-- Resultado -->
+    <div id="result-screen" style="display: none;">
+      <h2>Resultado do Teste</h2>
+      <div id="resultado-detalhado"></div>
+      <p>Envie o resultado para o professor!</p><br>
+      <a id="whatsapp-share" target="_blank">
+        <button>Compartilhar no WhatsApp com o Professor</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const startScreen = document.getElementById('start-screen');
+    const nameScreen = document.getElementById('name-screen');
+    const quiz = document.getElementById('quiz');
+    const resultScreen = document.getElementById('result-screen');
+    const startBtn = document.getElementById('start-btn');
+    const iniciarQuizBtn = document.getElementById('iniciar-quiz-btn');
+    const nomeInput = document.getElementById('nomeCompleto');
+    const questionEl = document.getElementById('question');
+    const answerEls = document.querySelectorAll('.answer');
+    const progressBar = document.getElementById('progress-bar');
+    const resultadoDetalhado = document.getElementById('resultado-detalhado');
+    const whatsappShare = document.getElementById('whatsapp-share');
+
+    // Lista manual com 25 perguntas
+    const quizData = [
+      { question: `Eu me adapto bem a uma situação ou ambiente novo a fim de levantar uma nova
+obra ou colocar alicerces na fé das pessoas.` },
+      { question: `Sinto alegria a comunicar a vontade de Deus às pessoas e o faço de maneira
+contagiante, persuasiva e clara, tendo certeza de que falo da parte de Deus.` },
+      { question: `Levo pessoas a uma decisão por Cristo, quanto à salvação.
+` },
+      { question: `Sinto grande necessidade e responsabilidade em promover o crescimento de
+um grupo de crentes, levando-os ao amadurecimento da vida cristã.` },
+      { question: `Tenho prazer em esclarecer detalhes que ajudarão outros a entenderem melhor,
+ou da forma certa, as verdades bíblicas` },
+      { question: `Eu tenho uma visão bíblica de como a igreja deve funcionar e desenvolver-se de
+forma saudável.` },
+      { question: `Tenho muita alegria e sou solicitado a pregar (nos lares, no templo, ao ar livre
+etc).` },
+      { question: `Tenho facilidade em iniciar uma conversa com uma pessoa desconhecida e levála ao conhecimento de Jesus Cristo.` },
+      { question: `Tenho prazer em ser útil na restauração da vida espiritual de crentes que se
+afastaram do Senhor.
+` },
+      { question: `Gosto de entender bem as questões importantes da Bíblia para expô-las a outros
+a fim de que entendam sem dificuldades.` },
+      { question: `Quando pastores da igreja precisam de direção ou orientação, me procuram e
+sentem que Deus lhes deu o que precisavam.
+` },
+      { question: `Acredito que a melhor maneira de levar o povo de Deus a uma vida mais dedicada
+é através da pregação pública da Palavra de Deus.` },
+      { question: `Gosto de cooperar com trabalhos evangelísticos da minha igreja, como séries de
+conferências, pregações ao ar livre, nas congregações, grupos pequenos
+evangelísticos etc.
+` },
+      { question: `Normalmente, outras pessoas me procuram para encorajamento ou orientação
+espiritual.
+` },
+      { question: `Pessoas me dizem que eu as ajudo a estudar a Bíblia de forma mais significativa.` },
+      { question: `Se Deus me chamasse, gostaria de pregar o evangelho ou alicerçar a igreja num
+local distante` },
+      { question: `Tenho muita facilidade de falar em público` },
+      { question: `Sinto grande preocupação com a salvação dos meus parentes, amigos, vizinhos
+e colegas.` },
+      { question: `Tenho prazer em alimentar outras pessoas espiritualmente, orientando-as nos
+caminhos do Senhor.` },
+      { question: `Gosto de dedicar bastante tempo aprendendo novas verdades da Bíblia para
+poder comunicá-las a outras pessoas.
+` },
+      { question: `Gosto de iniciar trabalhos novos fora da igreja local, como um estudo bíblico, um
+ponto de pregação ou um grupo familiar.
+` },
+      { question: `Quando há algum problema na igreja, acredito que pela pregação sobre o
+assunto ele pode ser resolvido` },
+      { question: `A ênfase das minhas conversas tem sido o assunto da salvação.` },
+      { question: `Quando tenho que dar orientações a um grupo de cristãos, sinto-me bem à
+vontade, estou “em casa”.` },
+      { question: `Quando um líder ou pastor ensina ou prega com uma interpretação errada, fico
+muito inquieto.` },
+    ];
+
+    let currentQuiz = 0;
+    let nomeAluno = '';
+    let respostas = [];
+
+    startBtn.addEventListener('click', () => {
+      startScreen.style.display = 'none';
+      nameScreen.style.display = 'block';
+    });
+
+    iniciarQuizBtn.addEventListener('click', () => {
+      nomeAluno = nomeInput.value.trim();
+      if (!nomeAluno) return alert("Por favor, preencha seu nome completo.");
+      nameScreen.style.display = 'none';
+      quiz.style.display = 'block';
+      loadQuiz();
+    });
+
+    function loadQuiz() {
+      deselectAnswers();
+      const data = quizData[currentQuiz];
+      questionEl.innerText = data.question;
+
+      const total = quizData.length;
+      const atual = currentQuiz + 1;
+      const porcentagem = Math.round((atual / total) * 100);
+
+      progressBar.style.width = `${porcentagem}%`;
+      document.getElementById('progress-info').innerText = `${porcentagem}% — Pergunta ${atual} de ${total}`;
+   }
+
+    function deselectAnswers() {
+      answerEls.forEach(el => el.classList.remove('selected'));
+    }
+
+    answerEls.forEach(el => {
+      el.addEventListener('click', () => {
+        const valor = parseInt(el.getAttribute('data-value'));
+        respostas.push(valor);
+        currentQuiz++;
+        if (currentQuiz < quizData.length) {
+          loadQuiz();
+        } else {
+          showResults();
+        }
+      });
+    });
+
+    function somarIndices(indices) {
+      return indices.reduce((acc, idx) => acc + (respostas[idx] || 0), 0);
+    }
+
+    function showResults() {
+      quiz.style.display = 'none';
+      resultScreen.style.display = 'block';
+
+      const dons = {
+        "Apostolo": [1, 6, 11, 16, 21],
+        "Profeta": [2, 7, 12, 17, 22],
+        "Evangelista": [3, 8, 13, 18, 23],
+        "Pastor": [4, 9, 14, 19, 24],
+        "Mestre": [5, 10, 15, 20, 25],
+      };
+
+      let texto = `<p><strong>Nome:</strong> ${nomeAluno}</p><br><ul>`;
+      let mensagem = `*2º TESTE DOS DONS ESPIRITUAIS*\n\n*Nome:* ${nomeAluno}\n`;
+      for (let dom in dons) {
+        const total = somarIndices(dons[dom]);
+        texto += `<li>${dom}: ${total}</li>`;
+        mensagem += `\n*${dom}*: ${total}`;
+      }
+      texto += '</ul>';
+      resultadoDetalhado.innerHTML = texto;
+      whatsappShare.href = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+    }
+  </script>
+</body>
+</html>

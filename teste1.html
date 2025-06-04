@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1º TESTE DOS DONS ESPIRITUAIS</title>
+  <link rel="stylesheet" href="/css/testes.css" />
+  <meta property="og:image" content="https://avancairarario.vercel.app/img/1.png" />
+</head>
+<body>
+  <div class="quiz-container">
+    <!-- Tela de boas-vindas -->
+    <div id="start-screen">
+      <img class="logo" src="/img/logo.jpg" alt="">
+      <h2>Bem-vindo ao 1º TESTE DOS DONS ESPIRITUAIS</h2>
+      <button id="start-btn">Vamos começar</button>
+    </div>
+
+    <!-- Tela para inserir nome -->
+    <div id="name-screen" style="display: none;">
+      <h2>Informe seu nome completo:</h2>
+      <input type="text" id="nomeCompleto" placeholder="Nome completo" />
+      <button id="iniciar-quiz-btn">Iniciar Quiz</button>
+    </div>
+
+    <!-- Quiz -->
+    
+    <div id="quiz" style="display: none;">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="progress-info" id="progress-info">0% — Pergunta 1 de 55</div><br>
+      <h2 id="question"></h2>
+      <div class="answers">
+        <div class="answer" data-value="0">😞 Nunca</div>
+        <div class="answer" data-value="1">😐 Raramente</div>
+        <div class="answer" data-value="2">😊 Às vezes</div>
+        <div class="answer" data-value="3">😄 Frequentemente</div>
+        <div class="answer" data-value="4">😜 Muito</div>
+        <div class="answer" data-value="5">😎 Eu brilho nisso</div>
+      </div>
+    </div>
+
+    <!-- Resultado -->
+    <div id="result-screen" style="display: none;">
+      <h2>Resultado do Teste</h2>
+      <div id="resultado-detalhado"></div>
+      <p>Envie o resultado para o professor!</p><br>
+      <a id="whatsapp-share" target="_blank">
+        <button>Compartilhar no WhatsApp com o Professor</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const startScreen = document.getElementById('start-screen');
+    const nameScreen = document.getElementById('name-screen');
+    const quiz = document.getElementById('quiz');
+    const resultScreen = document.getElementById('result-screen');
+    const startBtn = document.getElementById('start-btn');
+    const iniciarQuizBtn = document.getElementById('iniciar-quiz-btn');
+    const nomeInput = document.getElementById('nomeCompleto');
+    const questionEl = document.getElementById('question');
+    const answerEls = document.querySelectorAll('.answer');
+    const progressBar = document.getElementById('progress-bar');
+    const resultadoDetalhado = document.getElementById('resultado-detalhado');
+    const whatsappShare = document.getElementById('whatsapp-share');
+
+    // Lista manual com 55 perguntas
+    const quizData = [
+      { question: "Tenho experimentado um desejo especial de transmitir mensagens vindas diretamente de Deus"},
+      { question: "Eu consigo comunicar uma visão do que é possível para alguém e o encorajo acontinuar na luta, apesar de sua derrota." },
+      { question: "Outros irmãos ficam animados e motivados a me seguir por meio da visão dos propósitos de Deus que compartilho com eles" },
+      { question: "Gosto de ajudar as pessoas fazendo pequenos serviços." },
+      { question: "Tenho tanta certeza de que Deus suprirá minhas necessidades, que estou constantemente, doando meu dinheiro de forma sacrificial." },
+      { question: "Tenho alegria em trabalhar com as pessoas ignoradas ou desconhecidas da maioria" },
+      { question: `Aplico-me ao estudo da Palavra de Deus, dando atenção especial à pesquisa` },
+      { question: `Tenho facilidade para organizar idéias, pessoas, coisas e o tempo, tendo em vista
+um serviço mais efetivo e produtivo na obra do Senhor.
+` },
+      { question: `Minha casa está sempre à disposição para quem precisa de uma cama ou um
+teto.` },
+      { question: `Tenho ajudado os líderes da minha igreja para que eles tenham mais tempo para
+as coisas realmente importantes, relacionadas ao chamado deles.` },
+      { question: `Oro pelo menos uma hora por dia.` },
+      { question: `Pessoas me dizem que eu transmito mensagens que são tão urgentes e
+apropriadas que só podem ter vindo diretamente de Deus` },
+      { question: `Deus me dá as palavras que as pessoas indecisas, problemáticas e desencorajadas
+precisam` },
+      { question: `Eu fico à vontade quando me coloco na frente de um grupo para dar-lhes direção.` },
+      { question: `Fico muito à vontade quando posso ser útil em fazer certas tarefas auxiliares
+(arrumar cadeiras, transportar objetos, manter a ordem, cozinhar, construir ou
+reformar o prédio, secretariar uma reunião, controlar o aparelho de som, remeter
+cartas etc.
+` },
+      { question: `Tenho habilidade de administrar bem o meu dinheiro para poder dar mais
+liberalmente para o serviço do Senhor.
+` },
+      { question: `Gosto de visitar hospitais ou lares de pessoas necessitadas e me sinto abençoado
+com isso` },
+      { question: `Sinto prazer em explicar a verdade de um texto bíblico` },
+      { question: `Tenho facilidade em fazer planos de ação para que, junto com outras pessoas,
+possamos atingir um objetivo específico` },
+      { question: `Gosto muito de ser responsável por atividades sociais da igreja.` },
+      { question: `Pessoas me dizem que, por meu auxílio, ajudei-as a ficar mais eficazes em suas
+tarefas ou ministérios.
+` },
+      { question: `Quando recebo um pedido de oração, oro pelo menos durante alguns dias pelo
+motivo` },
+      { question: `Às vezes, tenho a forte sensação de que sei exatamente o que Deus deseja dizer
+a alguém. ` },
+      { question: `Tenho facilidade para entender os problemas dos outros e apontar-lhe os rumos
+de possíveis soluções.` },
+      { question: `Eu gosto de começar novos trabalhos na igreja, mas prefiro que outra pessoa de
+sequência depois de um tempo.` },
+      { question: `Já me disseram que eu pareço gostar de fazer os trabalhos simples de rotina, e
+que eu os faço muito bem.` },
+      { question: `Estou disposto a baixar meu padrão de vida para poder dar mais ao trabalho do
+Senhor.` },
+      { question: `Falo carinhosamente e gosto de auxiliar pessoas necessitadas ou impossibilitadas
+de se ajudar` },
+      { question: `Tenho grande interesse em ver as verdades da Palavra de Deus serem
+apresentadas de forma clara, com explicação do significado das palavras.
+` },
+      { question: `Gosto de trabalhar sob a coordenação de um líder, para ajudar a realizar a visão
+deste líder` },
+      { question: `Quando recebo visitas em minha casa, elas se sentem muito à vontade.
+` },
+      { question: `Gosto de acompanhar um líder, poupando-lhe o tempo e servindo-o.` },
+      { question: `Uma das minhas maneiras favoritas de passar o tempo é orando por outras
+pessoas.` },
+      { question: `Tenho a sensação que sei exatamente o que Deus quer que eu, ou outra pessoa,
+faça numa oportunidade específica. ` },
+      { question: `Aceito, sem muita dificuldade, os erros das pessoas, crendo que uma conversa
+pessoal com elas é o melhor remédio. ` },
+      { question: `Tenho facilidade de interpretar os ideais ou objetivos de meu grupo e de pensar
+em estratégias para pô-los em práticas.` },
+      { question: `Prefiro estar em atividade, fazendo alguma coisa, ao invés de apenas ficar sentado
+ouvindo alguém falar.
+` },
+      { question: `Meus registros mostram que tenho dado bem mais de 10% de minha renda para
+o trabalho de Deus` },
+      { question: `Sinto-me realizado quando posso fazer algo por uma pessoa doente ou em
+quaisquer necessidades.
+` },
+      { question: `Tenho facilidade de explicar a Bíblia` },
+      { question: `Tenho a capacidade de fazer planos eficientes e eficazes para realizar os objetivos
+do grupo.` },
+      { question: `Ouço frequentemente as pessoas dizerem que sou uma pessoa muito
+hospitaleira.
+` },
+      { question: `Estou contente servindo alguém pessoalmente para que seja abençoado em sua
+vida (ou ministério), mesmo quando minha ajuda não é reconhecida.` },
+      { question: `Alguém já me disse que uma oração minha trouxe respostas concretas em sua
+vida.` },
+      { question: `Tenho muita facilidade em ouvir a voz de Deus` },
+      { question: `Quando alguma pessoa está em pecado, geralmente a minha maior preocupação
+é ajudá-la em vez de criticá-la ` },
+      { question: `Quando começo um grupo ou sou colocado na frente de um, ele cresce e tem
+resultados visíveis. ` },
+      { question: `Aceito com alegria os trabalhos que me pedem, mesmo que seja do tipo que
+qualquer um pode fazer.` },
+      { question: `Quando há alguma necessidade financeira ou material na igreja ou na vida de
+alguém, logo penso em contribuir com as minhas posses para ajudar` },
+      { question: `Quando vejo alguma pessoa doente, ou com problemas, sinto grande compaixão
+por ela.` },
+      { question: `Alegro-me em descobrir fatos referentes à bíblia para poder passá-los a outras
+pessoas
+` },
+      { question: `Tenho experimentado a alegria de ser uma pessoa responsável pelo sucesso de
+trabalhos especiais em minha igreja` },
+      { question: `Quero que minha casa esteja sempre disponível para os servos de Deus, para
+qualquer necessidade` },
+      { question: `Tenho prazer em ser um auxiliar, realizando os serviços que melhor atendam às
+necessidades da pessoa que desejo ajudar.` },
+      { question: `Persisto num pedido de oração até sentir que Deus tem me respondido.` },
+    ];
+
+    let currentQuiz = 0;
+    let nomeAluno = '';
+    let respostas = [];
+
+    startBtn.addEventListener('click', () => {
+      startScreen.style.display = 'none';
+      nameScreen.style.display = 'block';
+    });
+
+    iniciarQuizBtn.addEventListener('click', () => {
+      nomeAluno = nomeInput.value.trim();
+      if (!nomeAluno) return alert("Por favor, preencha seu nome completo.");
+      nameScreen.style.display = 'none';
+      quiz.style.display = 'block';
+      loadQuiz();
+    });
+
+    function loadQuiz() {
+      deselectAnswers();
+      const data = quizData[currentQuiz];
+      questionEl.innerText = data.question;
+
+      const total = quizData.length;
+      const atual = currentQuiz + 1;
+      const porcentagem = Math.round((atual / total) * 100);
+
+      progressBar.style.width = `${porcentagem}%`;
+      document.getElementById('progress-info').innerText = `${porcentagem}% — Pergunta ${atual} de ${total}`;
+   }
+
+    function deselectAnswers() {
+      answerEls.forEach(el => el.classList.remove('selected'));
+    }
+
+    answerEls.forEach(el => {
+      el.addEventListener('click', () => {
+        const valor = parseInt(el.getAttribute('data-value'));
+        respostas.push(valor);
+        currentQuiz++;
+        if (currentQuiz < quizData.length) {
+          loadQuiz();
+        } else {
+          showResults();
+        }
+      });
+    });
+
+    function somarIndices(indices) {
+      return indices.reduce((acc, idx) => acc + (respostas[idx] || 0), 0);
+    }
+
+    function showResults() {
+      quiz.style.display = 'none';
+      resultScreen.style.display = 'block';
+
+      const dons = {
+        "Profecia": [0, 11, 22, 33, 44],
+        "Exortação/Encorajamento": [1, 12, 23, 34, 45],
+        "Presidir/Liderança": [2, 13, 24, 35, 46],
+        "Serviço": [3, 14, 25, 36, 47],
+        "Contribuir": [4, 15, 26, 37, 48],
+        "Misericórdia": [5, 16, 27, 38, 49],
+        "Ensino": [6, 17, 28, 39, 50],
+        "Administração": [7, 18, 29, 40, 51],
+        "Hospitalidade": [8, 19, 30, 41, 52],
+        "Socorro/Ajuda": [9, 20, 31, 42, 53],
+        "Intercessão": [10, 21, 32, 43, 54]
+      };
+
+      let texto = `<p><strong>Nome:</strong> ${nomeAluno}</p><br><ul>`;
+      let mensagem = `*1º TESTE DOS DONS ESPIRITUAIS*\n\n*Nome:* ${nomeAluno}\n`;
+      for (let dom in dons) {
+        const total = somarIndices(dons[dom]);
+        texto += `<li>${dom}: ${total}</li>`;
+        mensagem += `\n*${dom}*: ${total}`;
+      }
+      texto += '</ul>';
+      resultadoDetalhado.innerHTML = texto;
+      whatsappShare.href = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+    }
+  </script>
+</body>
+</html>
