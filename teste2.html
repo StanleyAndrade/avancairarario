@@ -177,13 +177,14 @@ muito inquieto.` },
       quiz.style.display = 'none';
       resultScreen.style.display = 'block';
 
-      const dons = {
-        "Apostolo": [1, 6, 11, 16, 21],
-        "Profeta": [2, 7, 12, 17, 22],
-        "Evangelista": [3, 8, 13, 18, 23],
-        "Pastor": [4, 9, 14, 19, 24],
-        "Mestre": [5, 10, 15, 20, 25],
-      };
+    const dons = {
+      "Apostolo": [0, 5, 10, 15, 20],      // perguntas 1, 6, 11, 16, 21
+      "Profeta": [1, 6, 11, 16, 21],       // perguntas 2, 7, 12, 17, 22
+      "Evangelista": [2, 7, 12, 17, 22],   // perguntas 3, 8, 13, 18, 23
+      "Pastor": [3, 8, 13, 18, 23],        // perguntas 4, 9, 14, 19, 24
+      "Mestre": [4, 9, 14, 19, 24],        // perguntas 5, 10, 15, 20, 25
+    };
+
 
       let texto = `<p><strong>Nome:</strong> ${nomeAluno}</p><br><ul>`;
       let mensagem = `*2º TESTE DOS DONS ESPIRITUAIS*\n\n*Nome:* ${nomeAluno}\n`;
